@@ -4,9 +4,9 @@ Griffin Sloves' personal website. Enjoy!
 
 www.griffinsloves.com
 
-Built from this template website - https://github.com/GriffinSSloves/WebsiteTemplate
+# Features / Tech used
 
-Features / Tech used
+Built from this template website (Also created by Griffin Sloves) - https://github.com/GriffinSSloves/WebsiteTemplate
 
 -   Typescript
 -   React
@@ -17,7 +17,7 @@ Features / Tech used
 -   EsLint
 -   Prettier
 
-Deployment Instructions
+# Deployment Instructions
 
 1. pnpm build
 2. copy dist folder to web server using FileZilla
