@@ -1,4 +1,4 @@
-import { GriffLink } from '@/components/common/link'
+import { GriffLink } from '@/components/common/GriffLink'
 import { Github, Linkedin } from 'lucide-react'
 
 export const AppFooter = () => {

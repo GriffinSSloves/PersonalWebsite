@@ -1,5 +1,5 @@
 import { FlexGrow } from '@/components/common/flexGrow'
-import { GriffLink } from '@/components/common/link'
+import { GriffLink } from '@/components/common/GriffLink'
 import { Separator } from '@radix-ui/react-separator'
 
 export const AppHeader = () => {

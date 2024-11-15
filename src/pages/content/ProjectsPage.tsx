@@ -1,4 +1,4 @@
-import { LinkButton } from '@/components/common/link'
+import { LinkButton } from '@/components/common/GriffLink'
 import ProjectCard from '@/components/custom/ProjectCard'
 import { Star } from 'lucide-react'
 
