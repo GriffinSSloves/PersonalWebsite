@@ -1,3 +1,4 @@
+import { GriffLink } from '@/components/common/link'
 import { Github, Linkedin } from 'lucide-react'
 
 export const AppFooter = () => {
@@ -10,34 +11,19 @@ export const AppFooter = () => {
                     {/* Copyright Section */}
                     <div className='text-sm text-muted-foreground'>
                         © {currentYear} Griffin Sloves • Good guy having a great time •{' '}
-                        <a
-                            href='https://github.com/GriffinSSloves/PersonalWebsite'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='text-muted-foreground hover:text-primary transition-colors underline'
-                            aria-label='Source Code'>
+                        <GriffLink external href='https://github.com/GriffinSSloves/PersonalWebsite' aria-label='Source Code'>
                             Want to learn how I built this?
-                        </a>
+                        </GriffLink>
                     </div>
 
                     {/* Social Links */}
                     <div className='flex items-center space-x-4'>
-                        <a
-                            href='https://github.com/GriffinSSloves'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='text-muted-foreground hover:text-primary transition-colors'
-                            aria-label='GitHub Profile'>
+                        <GriffLink external href='https://github.com/GriffinSSloves' aria-label='GitHub Profile'>
                             <Github size={20} />
-                        </a>
-                        <a
-                            href='https://www.linkedin.com/in/griffin-sloves/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='text-muted-foreground hover:text-primary transition-colors'
-                            aria-label='LinkedIn Profile'>
+                        </GriffLink>
+                        <GriffLink external href='https://www.linkedin.com/in/griffin-sloves/' aria-label='LinkedIn Profile'>
                             <Linkedin size={20} />
-                        </a>
+                        </GriffLink>
                     </div>
                 </div>
             </div>

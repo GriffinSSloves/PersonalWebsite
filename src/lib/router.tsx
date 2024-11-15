@@ -1,6 +1,7 @@
 import { AppLayout } from '@/layouts/AppLayout'
 import { BlogPage } from '@/pages/content/BlogPage'
 import { HomePage } from '@/pages/content/HomePage'
+import { ProjectsPage } from '@/pages/content/ProjectsPage'
 import { ErrorPage } from '@/pages/system/ErrorPage'
 import { createBrowserRouter } from 'react-router-dom'
 
@@ -17,12 +18,17 @@ export const AppRouter = createBrowserRouter(
                 {
                     path: 'blog',
                     element: <BlogPage />
+                },
+                {
+                    path: 'projects',
+                    element: <ProjectsPage />
                 }
             ],
             errorElement: <ErrorPage />
         }
     ],
     {
+        // These are enabled here to prevent warnings, I'm neutral about whether they should be enabled or not
         future: {
             v7_fetcherPersist: true,
             v7_normalizeFormMethod: true,

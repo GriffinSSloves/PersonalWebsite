@@ -64,10 +64,111 @@ Uses HSL color format, (Hue, Saturation, Lightness)
 }
 
 @layer base {
+    /* Base styles */
     * {
         @apply border-border;
     }
     body {
         @apply bg-background text-foreground;
+    }
+
+    /* Typography */
+    h1 {
+        @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+    }
+
+    h2 {
+        @apply scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0;
+    }
+
+    h3 {
+        @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+    }
+
+    h4 {
+        @apply scroll-m-20 text-xl font-semibold tracking-tight;
+    }
+
+    h5 {
+        @apply scroll-m-20 text-lg font-semibold tracking-tight;
+    }
+
+    h6 {
+        @apply scroll-m-20 text-base font-semibold tracking-tight;
+    }
+
+    p {
+        @apply leading-7 [&:not(:first-child)]:mt-6;
+    }
+
+    ul {
+        @apply my-6 ml-6 list-disc [&>li]:mt-2;
+    }
+
+    ol {
+        @apply my-6 ml-6 list-decimal [&>li]:mt-2;
+    }
+}
+
+/* Rich text content styles */
+@layer components {
+    .prose {
+        @apply text-base leading-7;
+    }
+
+    .prose :where(h1) {
+        @apply mt-12 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+    }
+
+    .prose :where(h2) {
+        @apply mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
+    }
+
+    .prose :where(h3) {
+        @apply mt-8 scroll-m-20 text-2xl font-semibold tracking-tight;
+    }
+
+    .prose :where(h4) {
+        @apply mt-8 scroll-m-20 text-xl font-semibold tracking-tight;
+    }
+
+    .prose :where(p) {
+        @apply leading-7 [&:not(:first-child)]:mt-6;
+    }
+
+    .prose :where(blockquote) {
+        @apply mt-6 border-l-2 pl-6 italic;
+    }
+
+    .prose :where(ul) {
+        @apply my-6 ml-6 list-disc [&>li]:mt-2;
+    }
+
+    .prose :where(code) {
+        @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+    }
+
+    .prose :where(pre) {
+        @apply mt-6 overflow-x-auto rounded-lg border bg-black py-4;
+    }
+
+    .prose :where(pre code) {
+        @apply relative rounded-none border-none bg-transparent p-0 text-white;
+    }
+
+    .prose :where(img) {
+        @apply rounded-lg border;
+    }
+
+    .prose :where(hr) {
+        @apply my-4 border-muted-foreground/20;
+    }
+
+    .prose :where(a) {
+        @apply font-medium underline underline-offset-4;
+    }
+
+    .prose :where(a:hover) {
+        @apply text-muted-foreground;
     }
 }
