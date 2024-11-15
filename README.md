@@ -17,8 +17,14 @@ Built from this template website (Also created by Griffin Sloves) - https://gith
 -   EsLint
 -   Prettier
 
+# Dev Instructions
+
+1. `pnpm install`
+2. `pnpm build` - You only have to run this the first time
+3. `pnpm dev`
+
 # Deployment Instructions
 
-1. pnpm build
+1. `pnpm build`
 2. copy dist folder to web server using FileZilla
     - (Ignore well_known folder, .ftpquota file, and error_log file)

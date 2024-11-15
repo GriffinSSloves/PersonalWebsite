@@ -1,5 +1,8 @@
 import { AppLayout } from '@/layouts/AppLayout'
+import { AboutMePage } from '@/pages/content/AboutMePage'
 import { BlogPage } from '@/pages/content/BlogPage'
+import { BooksPage } from '@/pages/content/BooksPage'
+import { ContactMePage } from '@/pages/content/ContactMePage'
 import { HomePage } from '@/pages/content/HomePage'
 import { ProjectsPage } from '@/pages/content/ProjectsPage'
 import { ErrorPage } from '@/pages/system/ErrorPage'
@@ -22,6 +25,18 @@ export const AppRouter = createBrowserRouter(
                 {
                     path: 'projects',
                     element: <ProjectsPage />
+                },
+                {
+                    path: 'about',
+                    element: <AboutMePage />
+                },
+                {
+                    path: 'contact',
+                    element: <ContactMePage />
+                },
+                {
+                    path: 'books',
+                    element: <BooksPage />
                 }
             ],
             errorElement: <ErrorPage />

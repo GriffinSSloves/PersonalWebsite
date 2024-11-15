@@ -5,7 +5,15 @@ export const HomePage = () => {
         <div>
             <h1>Pages</h1>
             <ul className='list-none'>
-                <GriffLink to='/projects'>Projects</GriffLink>
+                <li>
+                    <GriffLink to='/projects'>Projects</GriffLink>
+                </li>
+                <li>
+                    <GriffLink to='/about'>About me</GriffLink>
+                </li>
+                <li>
+                    <GriffLink to='/contact'>Contact</GriffLink>
+                </li>
             </ul>
         </div>
     )
