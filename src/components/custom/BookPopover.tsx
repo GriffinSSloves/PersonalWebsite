@@ -1,9 +1,10 @@
-import { BookData } from '@/pages/content/BooksPage'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '../ui/hover-card'
 import { ScrollArea } from '../ui/scroll-area'
 import { Separator } from '../ui/separator'
 import { ReactElement, useState } from 'react'
-import { delayMs } from '@/utils/delayMs'
+import { HTMLParser } from '@/clients/HTMLParser'
+import { GriffLink } from '../common/GriffLink'
+import { BookData } from '@/data/bookData'
 
 type BookPopoverProps = {
     book: BookData
@@ -11,36 +12,28 @@ type BookPopoverProps = {
 }
 
 export const BookPopover = ({ book }: BookPopoverProps) => {
-    const [wikiContent, setWikiContent] = useState<ReactElement | null>(null)
-    const [isFetching, setIsFetching] = useState(false)
-    const [hasError, setHasError] = useState(false)
+    const { wikipediaContent, wikiContentLoadFailed } = book
 
-    const fetchWikipediaContent = async () => {
-        await delayMs(1000)
-
-        return <div>This is a great novel</div>
-    }
+    const [wikiElement, setWikiElement] = useState<ReactElement | null>(null)
 
     const onHoverChange = async (open: boolean) => {
-        console.log('hover change', open, isFetching, wikiContent)
-        if (!open || isFetching || wikiContent) {
+        if (!open || !!wikiElement || !wikipediaContent || !!wikiContentLoadFailed) {
             return
         }
 
+        let parsedElement: ReactElement | null = null
         try {
-            setIsFetching(true)
-            console.log('starting to fetch')
-            const wikiContent = await fetchWikipediaContent()
-            setWikiContent(wikiContent)
+            const parser = new HTMLParser()
+            parsedElement = parser.parseData(wikipediaContent)
         } catch (error) {
-            console.error('Failed to fetch Wikipedia content', error)
-            setHasError(true)
-        } finally {
-            console.log('finished fetching')
-            setIsFetching(false)
+            console.error('Failed to parse Wikipedia content:', error)
+            parsedElement = <p>Failed to parse Wikipedia content</p>
         }
+
+        setWikiElement(parsedElement)
     }
 
+    // TODO: Make the whole title in the hover card the link, no need for the "see wiki" link
     return (
         <div>
             <HoverCard onOpenChange={onHoverChange}>
@@ -53,18 +46,22 @@ export const BookPopover = ({ book }: BookPopoverProps) => {
                 </HoverCardTrigger>
                 <HoverCardContent align='center' className='w-[480px] border rounded px-4 pt-4 pb-0 overflow-y-hidden'>
                     <ScrollArea className='h-[200px] w-full '>
-                        {wikiContent ? (
+                        {wikiElement ? (
                             <div className='space-y-2'>
-                                <h4>{book.title}</h4>
+                                <h4>
+                                    {book.title} -{' '}
+                                    <GriffLink external href={book.url}>
+                                        see wiki
+                                    </GriffLink>
+                                </h4>
+
                                 <Separator />
-                                {wikiContent}
+                                {wikiElement}
                             </div>
-                        ) : isFetching ? (
-                            <p>Loading Wikipedia content...</p>
-                        ) : hasError ? (
+                        ) : wikiContentLoadFailed ? (
                             <p>Failed to fetch Wikipedia content</p>
                         ) : (
-                            <p>Hover over the book to see more information</p>
+                            <p>Loading Wikipedia content...</p>
                         )}
                     </ScrollArea>
                 </HoverCardContent>

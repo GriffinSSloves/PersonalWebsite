@@ -1,40 +1,52 @@
 import { BookPopover } from '@/components/custom/BookPopover'
+import { allTimeFaveBookData, BookData, books2024Data } from '@/data/bookData'
+import { useEffect, useState } from 'react'
 
-export interface BookData {
-    title: string
-    author: string
-    url: string
-    rating: number
-    wikipediaContent?: string
+// TODO: Improve typing
+const populateBook = (data: any, book: BookData) => {
+    const wikiContent = data[book.title]
+    if (!wikiContent) {
+        return {
+            ...book,
+            wikiContentLoadFailed: true
+        }
+    }
+
+    return {
+        ...book,
+        wikipediaContent: wikiContent
+    }
 }
 
-const sampleBooks: BookData[] = [
-    {
-        title: '1984',
-        author: 'George Orwell',
-        url: 'https://en.wikipedia.org/wiki/Nineteen_Eighty-Four',
-        rating: 10,
-        wikipediaContent:
-            '1984 is a dystopian novel by George Orwell published in 1949. The novel is set in Airstrip One (formerly known as Great Britain), a province of the superstate Oceania in a world of perpetual war, omnipresent government surveillance, and public manipulation.'
-    },
-    {
-        title: 'To Kill a Mockingbird',
-        author: 'Harper Lee',
-        url: 'https://en.wikipedia.org/wiki/To_Kill_a_Mockingbird',
-        rating: 10,
-        wikipediaContent:
-            'To Kill a Mockingbird is a novel by Harper Lee published in 1960. It was immediately successful, winning the Pulitzer Prize, and has become a classic of modern American literature.'
-    }
-    // Add more books as needed
-]
-
 export const BooksPage = () => {
+    const [faveBooks, setFaveBooksPopulated] = useState<BookData[]>(allTimeFaveBookData)
+    const [books2024, setBooks2024Populated] = useState<BookData[]>(books2024Data)
+
+    const loadBooksAsync = async () => {
+        try {
+            const response = await fetch('Books/bookWikiContent.json')
+            const data = await response.json()
+
+            const faveBooksPopulated = allTimeFaveBookData.map((book) => populateBook(data, book))
+            const books2024Populated = books2024.map((book) => populateBook(data, book))
+
+            setFaveBooksPopulated(faveBooksPopulated)
+            setBooks2024Populated(books2024Populated)
+        } catch (error) {
+            console.error('Failed to load books:', error)
+        }
+    }
+
+    useEffect(() => {
+        loadBooksAsync()
+    }, [allTimeFaveBookData, books2024])
+
     return (
         <div>
             <h1>Books</h1>
             <h4>All time favorites</h4>
             <ul className='list-none'>
-                {sampleBooks.map((book, index) => (
+                {faveBooks.map((book, index) => (
                     <li key={index}>
                         <BookPopover book={book} showRating={false} />
                     </li>
@@ -43,7 +55,11 @@ export const BooksPage = () => {
 
             <h4>2024 Reads</h4>
             <ul className='list-none'>
-                <li></li>
+                {books2024.map((book, index) => (
+                    <li key={index}>
+                        <BookPopover book={book} showRating={false} />
+                    </li>
+                ))}
             </ul>
         </div>
     )

@@ -12,6 +12,9 @@ export const HomePage = () => {
                     <GriffLink to='/about'>About me</GriffLink>
                 </li>
                 <li>
+                    <GriffLink to='/books'>Books</GriffLink>
+                </li>
+                <li>
                     <GriffLink to='/contact'>Contact</GriffLink>
                 </li>
             </ul>
