@@ -1,3 +1,7 @@
+# Work in Progress
+
+Griffin will be finishing up this site within the next couple weeks. Stay tuned!
+
 # What's this?
 
 Griffin Sloves' personal website. Enjoy!
