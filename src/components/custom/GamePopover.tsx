@@ -4,15 +4,14 @@ import { Separator } from '../ui/separator'
 import { ReactElement, useState } from 'react'
 import { HTMLParser } from '@/clients/HTMLParser'
 import { GriffLink } from '../common/GriffLink'
-import { BookData } from '@/data/bookData'
+import { GameData } from '@/data/gameData'
 
-type BookPopoverProps = {
-    book: BookData
-    showRating?: boolean
+type GamePopoverProps = {
+    game: GameData
 }
 
-export const BookPopover = ({ book, showRating }: BookPopoverProps) => {
-    const { wikipediaContent, wikiContentLoadFailed } = book
+export const GamePopover = ({ game }: GamePopoverProps) => {
+    const { wikipediaContent, wikiContentLoadFailed } = game
 
     const [wikiElement, setWikiElement] = useState<ReactElement | null>(null)
 
@@ -39,8 +38,8 @@ export const BookPopover = ({ book, showRating }: BookPopoverProps) => {
                 <HoverCardTrigger asChild>
                     <div className='flex w-fit min-w-[600px] items-center space-x-2 p-1 bg-white hover:bg-gray-50 rounded-lg cursor-pointer'>
                         <p>
-                            <span className='font-semibold'>{book.title}</span> • {book.author} {showRating && `• ${book.rating}/10`}
-                            {book.note && <span className='italic'>• {book.note}</span>}
+                            <span className='font-semibold'>{game.title}</span>
+                            {game.note && <span className='italic'>• {game.note}</span>}
                         </p>
                     </div>
                 </HoverCardTrigger>
@@ -48,14 +47,14 @@ export const BookPopover = ({ book, showRating }: BookPopoverProps) => {
                     <ScrollArea className='h-[320px] w-full px-4'>
                         {wikiElement ? (
                             <div className='space-y-2 relative'>
-                                <GriffLink external href={book.url} className='h4Style'>
-                                    {book.title}
+                                <GriffLink external href={game.url} className='h4Style'>
+                                    {game.title}
                                 </GriffLink>
                                 <Separator />
                                 <div className='relative'>
-                                    {book.imageUrl && (
+                                    {game.imageUrl && (
                                         <div className='float-right ml-4 mb-2'>
-                                            <img src={book.imageUrl} alt={book.title} className='w-32 rounded-md' />
+                                            <img src={game.imageUrl} alt={game.title} className='w-32 rounded-md' />
                                         </div>
                                     )}
                                     {wikiElement}

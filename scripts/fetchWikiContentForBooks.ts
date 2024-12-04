@@ -2,22 +2,28 @@ import path from 'path'
 import fs from 'fs/promises'
 import { WikiContent, WikipediaClient } from '../src/clients/WikipediaClient'
 import { delayMs } from '../src/utils/delayMs'
+import { BookData } from '../src/data/bookData'
 
-const fetchWikiContentForBooks = async (bookTitles: string[], sanitize: boolean): Promise<Record<string, string>> => {
+const fetchWikiContentForBooks = async (bookData: BookData[], sanitize: boolean): Promise<Record<string, WikiContent>> => {
     console.log('Starting to fetch Wikipedia content...')
+    console.log('bookData', bookData)
 
     const wikiClient = new WikipediaClient()
     const results: WikiContent[] = []
     const unsuccessfulFetches: string[] = []
 
-    for (const title of bookTitles) {
+    for (const book of bookData) {
         try {
-            console.log(`Fetching content for: ${title}`)
-            const result = await wikiClient.fetchWikipediaContent(title, sanitize)
+            console.log(`Fetching content for: ${book.title}`)
+            const result = await wikiClient.fetchWikipediaContent({
+                url: book.url,
+                title: book.title,
+                sanitize
+            })
             results.push(result)
         } catch (error) {
-            console.error(`Failed to fetch content for: ${title}`, error)
-            unsuccessfulFetches.push(title)
+            console.error(`Failed to fetch content for: ${book.title}`, error)
+            unsuccessfulFetches.push(book.title)
         }
 
         await delayMs(1000)
@@ -25,11 +31,11 @@ const fetchWikiContentForBooks = async (bookTitles: string[], sanitize: boolean)
 
     // Convert to a more usable format
     const contentMap = results.reduce(
-        (acc, { title, extract }) => {
-            acc[title] = extract
+        (acc, result) => {
+            acc[result.title] = result
             return acc
         },
-        {} as Record<string, string>
+        {} as Record<string, WikiContent>
     )
 
     const successfulBookTitles = Object.keys(contentMap)
@@ -40,8 +46,8 @@ const fetchWikiContentForBooks = async (bookTitles: string[], sanitize: boolean)
     return contentMap
 }
 
-export const fetchAndDownloadWikiContentForBooks = async (bookTitles: string[], sanitize: boolean, outputPath: string) => {
-    const wikiContent = await fetchWikiContentForBooks(bookTitles, sanitize)
+export const fetchAndDownloadWikiContentForBooks = async (bookData: BookData[], sanitize: boolean, outputPath: string) => {
+    const wikiContent = await fetchWikiContentForBooks(bookData, sanitize)
 
     const fileContent = JSON.stringify(wikiContent, null, 2)
 

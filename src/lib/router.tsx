@@ -3,6 +3,7 @@ import { AboutMePage } from '@/pages/content/AboutMePage'
 import { BlogPage } from '@/pages/content/BlogPage'
 import { BooksPage } from '@/pages/content/BooksPage'
 import { ContactMePage } from '@/pages/content/ContactMePage'
+import { GamingPage } from '@/pages/content/GamingPage'
 import { HomePage } from '@/pages/content/HomePage'
 import { ProjectsPage } from '@/pages/content/ProjectsPage'
 import { ErrorPage } from '@/pages/system/ErrorPage'
@@ -37,6 +38,10 @@ export const AppRouter = createBrowserRouter(
                 {
                     path: 'books',
                     element: <BooksPage />
+                },
+                {
+                    path: 'gaming',
+                    element: <GamingPage />
                 }
             ],
             errorElement: <ErrorPage />
