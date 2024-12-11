@@ -107,20 +107,18 @@ export const AboutMePage = () => {
             <div className='w-full max-w-6xl mx-auto py-8'>
                 {timelineItems.map((item, index) => (
                     <div key={index}>
-                        <div className={`flex flex-col md:flex-row gap-8 h-96 items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                            {/* Text Content */}
-                            <Card className='flex-1 w-full h-full md:w-1/2'>
-                                <CardContent className='pt-6'>
-                                    <h3>{item.title}</h3>
-                                    <p className='text-muted-foreground'>{item.date}</p>
-                                    <div className='mt-4'>{item.description}</div>
-                                </CardContent>
-                            </Card>
-
-                            {/* Image Content */}
-                            <div className='flex-1 h-full w-full md:w-1/2'>
+                        <div className='flex flex-col gap-8 min-h-[24rem] md:h-96 md:flex-row items-center'>
+                            <div className='w-full h-64 md:h-full md:w-1/2 order-1'>
                                 <img src={item.imageUrl} alt={item.imageAlt} className='w-full h-full object-contain rounded-lg shadow-lg bg-secondary' />
                             </div>
+
+                            <Card className={`w-full md:w-1/2 h-auto md:h-full order-2 ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
+                                <CardContent className='pt-6 overflow-y-auto max-h-full'>
+                                    <h3>{item.title}</h3>
+                                    <p className='text-muted-foreground'>{item.date}</p>
+                                    <div className='mt-4 prose max-w-none'>{item.description}</div>
+                                </CardContent>
+                            </Card>
                         </div>
 
                         {index < timelineItems.length - 1 && (
