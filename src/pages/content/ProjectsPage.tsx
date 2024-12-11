@@ -2,8 +2,7 @@ import { LinkButton } from '@/components/common/GriffLink'
 import ProjectCard from '@/components/custom/ProjectCard'
 import { Star } from 'lucide-react'
 
-// TODO: Re-host picture of Foxtail AI's logo from my site
-// Improve styling of the project card for mobile
+// TODO: Could create a more generic ProjectType so that the ProjectCard could be more specific and so that we don't have to restate the common leftColumn and rightColumn props
 export const ProjectsPage = () => {
     return (
         <div>
@@ -15,11 +14,7 @@ export const ProjectsPage = () => {
                         description='An app that cross-lists your items on eBay, Facebook Marketplace, and other online shopping sites'
                         leftColumn={{
                             content: (
-                                <img
-                                    className='w-full max-h-48 object-contain aspect-auto'
-                                    src='https://foxtail.ai/wp-content/uploads/2022/10/home-hero-image@2x-1024x809.png'
-                                    alt="Foxtail AI's Logo"
-                                />
+                                <img className='w-full max-h-48 object-contain aspect-auto' src='/images/projects/FoxtailAI.webp' alt="Foxtail AI's Logo" />
                             )
                         }}
                         rightColumn={{
@@ -34,7 +29,7 @@ export const ProjectsPage = () => {
                                             </span>
                                             , Android, and Web app
                                         </li>
-                                        <li>ChatGPT Integration for Generating Listing Details</li>
+                                        <li>ChatGPT integration for generating listing details</li>
                                         <li>Performant for users with 20k+ listings</li>
                                     </ul>
                                 </>
@@ -42,6 +37,38 @@ export const ProjectsPage = () => {
                         }}
                         footerContent={
                             <LinkButton external href='https://foxtail.ai/'>
+                                Check it out
+                            </LinkButton>
+                        }
+                    />
+                </li>
+                <li>
+                    <ProjectCard
+                        title='Microsoft Whiteboard'
+                        description='Digital Whiteboard within the Microsoft Office Suite'
+                        leftColumn={{
+                            content: (
+                                <img
+                                    className='w-full max-h-48 object-contain aspect-auto'
+                                    src='/images/projects/MicrosoftWhiteboard.avif'
+                                    alt='Microsoft Whiteboard'
+                                />
+                            )
+                        }}
+                        rightColumn={{
+                            content: (
+                                <>
+                                    <h4 className='text-muted-foreground'>My Role & Highlights</h4>
+                                    <ul className='list-none'>
+                                        <li>Created the front-end interface for the web and Teams versions of the app</li>
+                                        <li>Millions of users (thanks Microsoft)</li>
+                                        <li>Accessible for blind users and translated into 100+ languages </li>
+                                    </ul>
+                                </>
+                            )
+                        }}
+                        footerContent={
+                            <LinkButton external href='https://www.microsoft.com/en-us/microsoft-365/microsoft-whiteboard/digital-whiteboard-app'>
                                 Check it out
                             </LinkButton>
                         }

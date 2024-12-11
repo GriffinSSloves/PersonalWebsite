@@ -1,23 +1,17 @@
-import { GriffLink } from '@/components/common/GriffLink'
+import VitruvianNav, { NavLink } from '@/components/custom/VitruvianNav'
+
+const navigationLinks: NavLink[] = [
+    { position: 'heart', label: 'About Me', href: '/about' },
+    { position: 'leftArm', label: 'Books', href: '/books' },
+    { position: 'rightArm', label: 'Projects', href: '/projects' },
+    { position: 'leftLeg', label: 'Gaming', href: '/gaming' },
+    { position: 'rightLeg', label: 'Friends', href: '/friends' }
+]
 
 export const HomePage = () => {
     return (
         <div>
-            <h1>Pages</h1>
-            <ul className='list-none'>
-                <li>
-                    <GriffLink to='/projects'>Projects</GriffLink>
-                </li>
-                <li>
-                    <GriffLink to='/about'>About me</GriffLink>
-                </li>
-                <li>
-                    <GriffLink to='/books'>Books</GriffLink>
-                </li>
-                <li>
-                    <GriffLink to='/contact'>Contact</GriffLink>
-                </li>
-            </ul>
+            <VitruvianNav links={navigationLinks} />
         </div>
     )
 }

@@ -3,9 +3,11 @@ import { AboutMePage } from '@/pages/content/AboutMePage'
 import { BlogPage } from '@/pages/content/BlogPage'
 import { BooksPage } from '@/pages/content/BooksPage'
 import { ContactMePage } from '@/pages/content/ContactMePage'
+import { FriendsPage } from '@/pages/content/FriendsPage'
 import { GamingPage } from '@/pages/content/GamingPage'
 import { HomePage } from '@/pages/content/HomePage'
 import { ProjectsPage } from '@/pages/content/ProjectsPage'
+import { StatusPage } from '@/pages/content/StatusPage'
 import { ErrorPage } from '@/pages/system/ErrorPage'
 import { createBrowserRouter } from 'react-router-dom'
 
@@ -18,10 +20,6 @@ export const AppRouter = createBrowserRouter(
                 {
                     index: true,
                     element: <HomePage />
-                },
-                {
-                    path: 'blog',
-                    element: <BlogPage />
                 },
                 {
                     path: 'projects',
@@ -42,7 +40,20 @@ export const AppRouter = createBrowserRouter(
                 {
                     path: 'gaming',
                     element: <GamingPage />
+                },
+                {
+                    path: 'friends',
+                    element: <FriendsPage />
                 }
+                // Future Ideas
+                // {
+                //     path: 'blog',
+                //     element: <BlogPage />
+                // },
+                // {
+                //     path: 'status',
+                //     element: <StatusPage />
+                // }
             ],
             errorElement: <ErrorPage />
         }

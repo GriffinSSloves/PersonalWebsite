@@ -13,6 +13,10 @@ export const AppFooter = () => {
                         © {currentYear} Griffin Sloves • Good guy having a great time •{' '}
                         <GriffLink external href='https://github.com/GriffinSSloves/PersonalWebsite' aria-label='Source Code'>
                             Want to learn how I built this?
+                        </GriffLink>{' '}
+                        •{' '}
+                        <GriffLink to='/contact' aria-label='Contact Me'>
+                            Contact me
                         </GriffLink>
                     </div>
 

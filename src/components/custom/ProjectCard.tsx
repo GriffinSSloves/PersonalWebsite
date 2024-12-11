@@ -21,9 +21,9 @@ const ProjectCard = ({ title, description, leftColumn, rightColumn, footerConten
                 <CardDescription>{description}</CardDescription>
             </CardHeader>
             <CardContent>
-                <div className='flex gap-6 p-6'>
-                    <div className='flex-1 p-4'>{leftColumn.content}</div>
-                    <div className='flex-1 p-4'>{rightColumn.content}</div>
+                <div className='flex flex-col md:flex-row gap-6 md:p-4'>
+                    <div className='flex-1'>{leftColumn.content}</div>
+                    <div className='flex-1'>{rightColumn.content}</div>
                 </div>
             </CardContent>
             {footerContent && <CardFooter>{footerContent}</CardFooter>}
