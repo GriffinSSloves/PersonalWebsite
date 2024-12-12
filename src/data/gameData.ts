@@ -8,6 +8,7 @@ export type GameTitle =
     | 'Hearts'
     | 'Hearthstone'
     | 'Super Auto Pets'
+    | 'Wingspan'
 
 export interface GameData {
     title: GameTitle
@@ -117,7 +118,21 @@ export const gameData: Record<GameTitle, GameData> = {
         title: 'Super Auto Pets',
         url: 'https://en.wikipedia.org/wiki/Super_Auto_Pets',
         note: 'Super quick and fun strategy game to play on your phone.'
+    },
+    Wingspan: {
+        title: 'Wingspan',
+        url: 'https://en.wikipedia.org/wiki/Wingspan_(board_game)',
+        note: "Melissa and I's favorite board game to play together. It turns out we love birds - who would have thought."
     }
 }
 
-export const faveGames: GameTitle[] = ['League of Legends', 'Teamfight Tactics', 'Civilization V', 'Overcooked 2', 'Call of Duty', 'Chess', 'Hearts']
+export const faveGames: GameTitle[] = [
+    'League of Legends',
+    'Teamfight Tactics',
+    'Civilization V',
+    'Overcooked 2',
+    'Call of Duty',
+    'Chess',
+    'Hearts',
+    'Wingspan'
+]

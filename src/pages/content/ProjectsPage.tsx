@@ -20,7 +20,7 @@ export const ProjectsPage = () => {
                         rightColumn={{
                             content: (
                                 <>
-                                    <h4 className='text-muted-foreground'>Highlights</h4>
+                                    <h4 className='text-muted-foreground'>My Role & Highlights</h4>
                                     <ul className='list-none'>
                                         <li>
                                             iOS{' '}
@@ -69,6 +69,38 @@ export const ProjectsPage = () => {
                         }}
                         footerContent={
                             <LinkButton external href='https://www.microsoft.com/en-us/microsoft-365/microsoft-whiteboard/digital-whiteboard-app'>
+                                Check it out
+                            </LinkButton>
+                        }
+                    />
+                </li>
+                <li>
+                    <ProjectCard
+                        title='Quiet of the Leaves'
+                        description='Story-based video game about a girl who gets separated from her dad in a forest'
+                        leftColumn={{
+                            content: (
+                                <img
+                                    className='w-full max-h-48 object-contain aspect-auto'
+                                    src='/images/projects/QuietOfTheLeaves.png'
+                                    alt='Quiet of the Leaves'
+                                />
+                            )
+                        }}
+                        rightColumn={{
+                            content: (
+                                <>
+                                    <h4 className='text-muted-foreground'>My Role & Highlights</h4>
+                                    <ul className='list-none'>
+                                        <li>My very first public project at USC!</li>
+                                        <li>Lead the engineering team of 5 other students</li>
+                                        <li>Narrative branching system</li>
+                                    </ul>
+                                </>
+                            )
+                        }}
+                        footerContent={
+                            <LinkButton external href='https://quietoftheleaves.itch.io/'>
                                 Check it out
                             </LinkButton>
                         }

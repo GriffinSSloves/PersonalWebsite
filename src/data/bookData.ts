@@ -7,6 +7,7 @@ export interface BookData {
     wikipediaContent?: string
     imageUrl?: string
     wikiContentLoadFailed?: boolean
+    currentlyReading?: boolean
 }
 
 export const allTimeFaveBookData: BookData[] = [
@@ -15,7 +16,7 @@ export const allTimeFaveBookData: BookData[] = [
         author: 'Joseph Heller',
         url: 'https://en.wikipedia.org/wiki/Catch-22',
         rating: 10,
-        note: 'A man can’t escape World War II due to an impossible requirement to leave the service (the Catch-22. It’s hilarious though, and made me a funnier person.'
+        note: 'A man can’t escape World War II due to an impossible requirement to leave the service (the Catch-22). It’s hilarious though, and made me a funnier person.'
     },
     {
         title: "But What If We're Wrong?",
@@ -51,6 +52,13 @@ export const allTimeFaveBookData: BookData[] = [
         url: 'https://en.wikipedia.org/wiki/Watchmen',
         rating: 10,
         note: 'Comic book that starts with a superhero getting murdered. Dark, but awesome.'
+    },
+    {
+        title: 'Thinking, Fast and Slow',
+        author: 'Daniel Kahneman',
+        url: 'https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow',
+        rating: 10,
+        note: 'Non-fiction book about how our brains work, what makes people happy, and how we can think irrationally.'
     },
     {
         title: 'Griffin and Sabine',
@@ -103,6 +111,13 @@ export const books2024Data: BookData[] = [
         author: 'Shelby Van Pelt',
         url: 'https://en.wikipedia.org/wiki/Remarkably_Bright_Creatures',
         rating: 7
+    },
+    {
+        title: 'Stories of your life and others',
+        author: 'Ted Chiang',
+        url: 'https://en.wikipedia.org/wiki/Stories_of_Your_Life_and_Others',
+        rating: 0,
+        currentlyReading: true
     }
 ]
 

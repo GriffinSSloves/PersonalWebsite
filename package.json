@@ -10,7 +10,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "preview": "vite preview",
-    "fetch-wiki": "tsx scripts/runWikiFetch.ts"
+    "fetch-wiki": "tsx scripts/runWikiFetch.ts",
+    "optimize-images": "tsx scripts/optimizeImages.ts"
   },
   "dependencies": {
     "@radix-ui/react-hover-card": "^1.1.2",
@@ -25,6 +26,7 @@
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.1.2",
     "react-router-dom": "^6.28.0",
+    "sharp": "^0.33.5",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7"
   },
@@ -35,6 +37,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/sanitize-html": "^2.13.0",
+    "@types/sharp": "^0.32.0",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@typescript-eslint/parser": "^8.17.0",
     "@vitejs/plugin-react-swc": "^3.7.2",

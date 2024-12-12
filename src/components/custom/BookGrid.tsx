@@ -29,7 +29,11 @@ const BookPopover = ({ book, showRating, handleHoverChange, wikiElement }: BookP
                     <CardContent className='p-0'>
                         <h3 className='font-semibold text-lg line-clamp-2'>{book.title}</h3>
                         <p className='text-sm text-gray-600 [&:not(:first-child)]:mt-1'>{book.author}</p>
-                        {showRating && book.rating && <p className='text-sm text-amber-600 font-medium [&:not(:first-child)]:mt-1'>Rating: {book.rating}/10</p>}
+                        {book.currentlyReading ? (
+                            <p className='text-sm text-amber-600 font-medium [&:not(:first-child)]:mt-1'>Currently reading!</p>
+                        ) : (
+                            showRating && <p className='text-sm text-amber-600 font-medium [&:not(:first-child)]:mt-1'>Rating: {book.rating}/10</p>
+                        )}
                     </CardContent>
                     {book.note && (
                         <CardFooter className='px-4 py-3 bg-gray-50'>

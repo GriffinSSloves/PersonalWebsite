@@ -1,5 +1,5 @@
 import path from 'path'
-import { allBooks } from '../src/data/bookData'
+import { allBooks } from '../../src/data/bookData'
 import { fetchAndSaveWikiContent, FetchWikiOptions, SaveOptions } from './fetchWikiContent'
 
 const outputPath = path.join(process.cwd(), 'public', 'Data', 'bookWikiContent.json')

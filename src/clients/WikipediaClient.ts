@@ -69,7 +69,7 @@ export class WikipediaClient implements IWikipediaClient {
             const localImagePath = await this.#downloadAndSaveImage(imageDir, wikiImageUrl, title)
             result.imageUrl = stripPublicFromPath(localImagePath)
         } else {
-            result.imageUrl = getImagePath(title, 'books')
+            result.imageUrl = getImagePath(title, imageDir)
         }
 
         return result

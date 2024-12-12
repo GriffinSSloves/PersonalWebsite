@@ -1,6 +1,6 @@
 import path from 'path'
-import { WikiContent, WikiFetchable, WikipediaClient } from '../src/clients/WikipediaClient'
-import { delayMs } from '../src/utils/delayMs'
+import { WikiContent, WikiFetchable, WikipediaClient } from '../../src/clients/WikipediaClient'
+import { delayMs } from '../../src/utils/delayMs'
 import fs from 'fs/promises'
 
 export interface FetchWikiOptions {

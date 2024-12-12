@@ -1,7 +1,7 @@
 import path from 'path'
 import { fetchAndSaveWikiContent, FetchWikiOptions, SaveOptions } from './fetchWikiContent'
-import { WikiFetchable } from '../src/clients/WikipediaClient'
-import { gameData } from '../src/data/gameData'
+import { WikiFetchable } from '../../src/clients/WikipediaClient'
+import { gameData } from '../../src/data/gameData'
 
 const outputPath = path.join(process.cwd(), 'public', 'Data', 'gameWikiContent.json')
 

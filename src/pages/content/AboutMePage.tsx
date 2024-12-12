@@ -1,5 +1,4 @@
 import { Card, CardContent } from '@/components/ui/card'
-import { Separator } from '@radix-ui/react-separator'
 import { ReactNode } from 'react'
 
 // TODO: Improve pictures of me
@@ -103,29 +102,20 @@ export const AboutMePage = () => {
             <br />
 
             <h4>My Story</h4>
-
-            <div className='w-full max-w-6xl mx-auto py-8'>
+            <div className='w-full max-w-6xl mx-auto py-8 space-y-8'>
                 {timelineItems.map((item, index) => (
-                    <div key={index}>
-                        <div className='flex flex-col gap-8 min-h-[24rem] md:h-96 md:flex-row items-center'>
-                            <div className='w-full h-64 md:h-full md:w-1/2 order-1'>
-                                <img src={item.imageUrl} alt={item.imageAlt} className='w-full h-full object-contain rounded-lg shadow-lg bg-secondary' />
-                            </div>
-
-                            <Card className={`w-full md:w-1/2 h-auto md:h-full order-2 ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
-                                <CardContent className='pt-6 overflow-y-auto max-h-full'>
-                                    <h3>{item.title}</h3>
-                                    <p className='text-muted-foreground'>{item.date}</p>
-                                    <div className='mt-4 prose max-w-none'>{item.description}</div>
-                                </CardContent>
-                            </Card>
+                    <div key={index} className='flex flex-col gap-8 min-h-[24rem] md:h-96 md:flex-row items-center'>
+                        <div className={`w-full h-64 md:h-full md:w-1/2 order-1 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
+                            <img src={item.imageUrl} alt={item.imageAlt} className='w-full h-full object-contain rounded-lg shadow-lg bg-secondary' />
                         </div>
 
-                        {index < timelineItems.length - 1 && (
-                            <div className='my-8'>
-                                <Separator className='w-1/2 mx-auto' />
-                            </div>
-                        )}
+                        <Card className={`w-full md:w-1/2 h-auto md:h-full order-2 ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
+                            <CardContent className='pt-6 overflow-y-auto max-h-full'>
+                                <h3>{item.title}</h3>
+                                <p className='text-muted-foreground'>{item.date}</p>
+                                <div className='mt-4 prose max-w-none'>{item.description}</div>
+                            </CardContent>
+                        </Card>
                     </div>
                 ))}
             </div>
