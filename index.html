@@ -3,6 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/GriffinLogo.svg" />
+        <!-- Preload the hero image on the home page-->
+        <link
+            rel="preload"
+            as="image"
+            href="/images/optimized/home/VitruvianMan-1290.avif"
+            imagesrcset="
+    /images/optimized/home/VitruvianMan-270.avif 270w,
+    /images/optimized/home/VitruvianMan-768.avif 768w,
+    /images/optimized/home/VitruvianMan-984.avif 984w,
+    /images/optimized/home/VitruvianMan-1290.avif 1290w"
+            imagesizes="(min-width: 768px) 768px, 100vw"
+            type="image/avif" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
             name="description"
