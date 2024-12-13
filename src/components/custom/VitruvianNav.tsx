@@ -13,30 +13,12 @@ type VitruvianNavProps = {
     links: NavLink[]
     className?: string
 }
-
-// Desktop positions
-const desktopPositions: Record<NavLinkPosition, { top: string; left: string }> = {
-    heart: { top: '33%', left: '50%' },
-    leftArm: { top: '33%', left: '6%' },
-    rightArm: { top: '33%', left: '93%' },
-    leftLeg: { top: '90%', left: '25%' },
-    rightLeg: { top: '90%', left: '75%' }
-}
-
-// Mobile positions - arms pulled in closer
-const mobilePositions: Record<NavLinkPosition, { top: string; left: string }> = {
-    heart: { top: '33%', left: '50%' },
-    leftArm: { top: '33%', left: '10%' },
-    rightArm: { top: '33%', left: '85%' },
-    leftLeg: { top: '90%', left: '25%' },
-    rightLeg: { top: '90%', left: '75%' }
-}
-
 export const VitruvianNav = ({ links, className = '' }: VitruvianNavProps) => {
     const getPositionClasses = (position: NavLinkPosition): string => {
         // Base positioning classes that all links will have
         const baseClasses = 'absolute transform -translate-x-1/2 -translate-y-1/2'
 
+        // Positions, desktop uses the ones that start with sm:, mobile uses the ones that don't
         const positions = {
             heart: 'left-[48%] sm:left-[50%] top-[33%] sm:top-[33%]',
             leftArm: 'left-[10%] sm:left-[6%] top-[33%] sm:top-[33%]',
@@ -50,12 +32,14 @@ export const VitruvianNav = ({ links, className = '' }: VitruvianNavProps) => {
 
     return (
         <div className={`relative w-full max-w-3xl mx-auto ${className}`}>
-            {/* Container for the image */}
             <div className='relative w-full pb-[100%]'>
-                {/* The Vitruvian man image */}
-                <GriffImage src='/home/VitruvianMan.webp' alt='Vitruvian Man Navigation' className='absolute inset-0 w-full h-full object-contain' />
+                <GriffImage
+                    src='/home/VitruvianMan.webp'
+                    alt='Vitruvian Man Navigation'
+                    className='absolute inset-0 w-full h-full object-contain'
+                    fetchPriority='high'
+                />
 
-                {/* Navigation bubbles */}
                 {links.map((link) => (
                     <Link
                         key={link.href}

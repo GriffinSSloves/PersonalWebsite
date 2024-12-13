@@ -1,6 +1,4 @@
-interface GriffImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-    lowPriority?: boolean
-}
+interface GriffImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
 const placeholderImage = '/system/placeholder.png'
 
@@ -8,7 +6,6 @@ export const GriffImage = ({
     src = placeholderImage,
     alt,
     className,
-    lowPriority = true,
     sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
     ...props
 }: GriffImageProps) => {
@@ -31,15 +28,7 @@ export const GriffImage = ({
         <picture className={className}>
             <source type='image/avif' srcSet={avifSrcSet} sizes={sizes} />
             <source type='image/webp' srcSet={webpSrcSet} sizes={sizes} />
-            <img
-                src={`/images/optimized/${baseFilename}-1024.webp`}
-                className={className}
-                loading={lowPriority ? 'lazy' : 'eager'}
-                decoding={lowPriority ? 'async' : 'sync'}
-                fetchPriority={lowPriority ? 'auto' : 'high'}
-                alt={alt}
-                {...props}
-            />
+            <img src={`/images/optimized/${baseFilename}-1024.webp`} className={className} alt={alt} {...props} />
         </picture>
     )
 }
