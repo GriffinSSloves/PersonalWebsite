@@ -1,6 +1,5 @@
 import { GriffImage } from '@/components/common/GriffImage'
 import { GriffLink } from '@/components/common/GriffLink'
-import FriendCard from '@/components/custom/FriendCard'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 
 interface FriendProjectData {
@@ -43,7 +42,7 @@ const friendProjectData: FriendProjectData[] = [
     }
 ]
 
-export const FriendsPage = () => {
+const FriendsPage = () => {
     const randomizedFriendData = friendProjectData.sort(() => Math.random() - 0.5)
 
     return (
@@ -91,3 +90,5 @@ export const FriendsPage = () => {
         </div>
     )
 }
+
+export default FriendsPage

@@ -27,3 +27,5 @@ export const ContactMePage = () => {
         </div>
     )
 }
+
+export default ContactMePage

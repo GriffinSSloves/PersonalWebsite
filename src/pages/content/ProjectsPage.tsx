@@ -4,7 +4,7 @@ import ProjectCard from '@/components/custom/ProjectCard'
 import { Star } from 'lucide-react'
 
 // TODO: Could create a more generic ProjectType so that the ProjectCard could be more specific and so that we don't have to restate the common leftColumn and rightColumn props
-export const ProjectsPage = () => {
+const ProjectsPage = () => {
     return (
         <div>
             <h1>Projects</h1>
@@ -105,3 +105,5 @@ export const ProjectsPage = () => {
         </div>
     )
 }
+
+export default ProjectsPage

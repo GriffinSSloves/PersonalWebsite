@@ -20,7 +20,7 @@ const populateGame = (data: Record<string, WikiContent>, game: GameData) => {
     }
 }
 
-export const GamingPage = () => {
+const GamingPage = () => {
     const [gameDataPopulated, setGameDataPopulated] = useState<Record<GameTitle, GameData>>(gameData)
 
     const loadGamesAsync = async (gameData: Record<GameTitle, GameData>) => {
@@ -81,3 +81,5 @@ export const GamingPage = () => {
         </div>
     )
 }
+
+export default GamingPage

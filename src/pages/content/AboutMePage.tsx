@@ -95,7 +95,7 @@ const timelineItems: TimelineItem[] = [
     }
 ]
 
-export const AboutMePage = () => {
+const AboutMePage = () => {
     return (
         <div>
             <h1>About Me</h1>
@@ -123,3 +123,5 @@ export const AboutMePage = () => {
         </div>
     )
 }
+
+export default AboutMePage

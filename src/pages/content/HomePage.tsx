@@ -8,10 +8,12 @@ const navigationLinks: NavLink[] = [
     { position: 'rightLeg', label: 'Friends', href: '/friends' }
 ]
 
-export const HomePage = () => {
+const HomePage = () => {
     return (
         <div>
             <VitruvianNav links={navigationLinks} />
         </div>
     )
 }
+
+export default HomePage

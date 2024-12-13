@@ -1,15 +1,28 @@
+import { lazy, Suspense } from 'react'
 import { AppLayout } from '@/layouts/AppLayout'
-import { AboutMePage } from '@/pages/content/AboutMePage'
-import { BlogPage } from '@/pages/content/BlogPage'
-import { BooksPage } from '@/pages/content/BooksPage'
-import { ContactMePage } from '@/pages/content/ContactMePage'
-import { FriendsPage } from '@/pages/content/FriendsPage'
-import { GamingPage } from '@/pages/content/GamingPage'
-import { HomePage } from '@/pages/content/HomePage'
-import { ProjectsPage } from '@/pages/content/ProjectsPage'
-import { StatusPage } from '@/pages/content/StatusPage'
 import { ErrorPage } from '@/pages/system/ErrorPage'
 import { createBrowserRouter } from 'react-router-dom'
+import HomePage from '@/pages/content/HomePage'
+
+// Lazy load route components to reduce initial bundle size
+const ProjectsPage = lazy(() => import('@/pages/content/ProjectsPage'))
+const AboutMePage = lazy(() => import('@/pages/content/AboutMePage'))
+const ContactMePage = lazy(() => import('@/pages/content/ContactMePage'))
+const BooksPage = lazy(() => import('@/pages/content/BooksPage'))
+const GamingPage = lazy(() => import('@/pages/content/GamingPage'))
+const FriendsPage = lazy(() => import('@/pages/content/FriendsPage'))
+
+const PageLoader = () => (
+    <div className='flex items-center justify-center min-h-screen'>
+        <div className='animate-pulse'>Loading...</div>
+    </div>
+)
+
+const LazyRoute = ({ Component }: { Component: React.ComponentType }) => (
+    <Suspense fallback={<PageLoader />}>
+        <Component />
+    </Suspense>
+)
 
 export const AppRouter = createBrowserRouter(
     [
@@ -23,43 +36,33 @@ export const AppRouter = createBrowserRouter(
                 },
                 {
                     path: 'projects',
-                    element: <ProjectsPage />
+                    element: <LazyRoute Component={ProjectsPage} />
                 },
                 {
                     path: 'about',
-                    element: <AboutMePage />
+                    element: <LazyRoute Component={AboutMePage} />
                 },
                 {
                     path: 'contact',
-                    element: <ContactMePage />
+                    element: <LazyRoute Component={ContactMePage} />
                 },
                 {
                     path: 'books',
-                    element: <BooksPage />
+                    element: <LazyRoute Component={BooksPage} />
                 },
                 {
                     path: 'gaming',
-                    element: <GamingPage />
+                    element: <LazyRoute Component={GamingPage} />
                 },
                 {
                     path: 'friends',
-                    element: <FriendsPage />
+                    element: <LazyRoute Component={FriendsPage} />
                 }
-                // Future Ideas
-                // {
-                //     path: 'blog',
-                //     element: <BlogPage />
-                // },
-                // {
-                //     path: 'status',
-                //     element: <StatusPage />
-                // }
             ],
             errorElement: <ErrorPage />
         }
     ],
     {
-        // These are enabled here to prevent warnings, I'm neutral about whether they should be enabled or not
         future: {
             v7_fetcherPersist: true,
             v7_normalizeFormMethod: true,

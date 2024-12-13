@@ -19,7 +19,7 @@ const populateBook = (data: Record<string, WikiContent>, book: BookData) => {
     }
 }
 
-export const BooksPage = () => {
+const BooksPage = () => {
     const [faveBooksPopulated, setFaveBooksPopulated] = useState<BookData[]>(allTimeFaveBookData)
     const [books2024Populated, setBooks2024Populated] = useState<BookData[]>(books2024Data)
 
@@ -51,3 +51,5 @@ export const BooksPage = () => {
         </div>
     )
 }
+
+export default BooksPage

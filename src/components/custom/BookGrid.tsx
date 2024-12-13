@@ -8,6 +8,10 @@ import { HTMLParser } from '@/clients/HTMLParser'
 import { BookData } from '@/data/bookData'
 import { GriffImage } from '../common/GriffImage'
 
+// TODO: It could be a potential performance improvement to pre-parse all of the wikipedia content instead of parsing it on hover
+// Could avoid having to build the html-sanitize into the package
+// Potential downside of generating the html beforehand and finding a place to put it
+
 type BookPopoverProps = {
     book: BookData
     handleHoverChange: (open: boolean, book: BookData) => void
