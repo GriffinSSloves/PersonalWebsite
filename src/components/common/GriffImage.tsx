@@ -1,17 +1,15 @@
+import { IMAGE_SIZES } from '@/constants/imageSizes'
+
 interface GriffImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
 const placeholderImage = '/system/placeholder.png'
 
 // TODO: Add placeholder image
-// TODO: Need to fix double
 
-export const GriffImage = ({
-    src = placeholderImage,
-    alt,
-    className,
-    sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
-    ...props
-}: GriffImageProps) => {
+// Optimization that helps the browser to load the right image size
+const defaultSizes = '(min-width: 768px) 768px, 100vw'
+
+export const GriffImage = ({ src = placeholderImage, alt, className, sizes = defaultSizes, ...props }: GriffImageProps) => {
     const extension = src.split('.').pop()?.toLowerCase()
     const baseFilename = src.replace(/\.[^/.]+$/, '')
     const baseFilenameWithoutLeadingSlash = baseFilename.replace(/^\//, '')
@@ -22,11 +20,9 @@ export const GriffImage = ({
     }
 
     // For raster images, use picture element with srcset
-    const imageSizes = [270, 768, 1024, 1310, 1536, 1720, 1890, 2048]
+    const webpSrcSet = IMAGE_SIZES.map((size) => `/images/optimized/${baseFilenameWithoutLeadingSlash}-${size}.webp ${size}w`).join(', ')
 
-    const webpSrcSet = imageSizes.map((size) => `/images/optimized/${baseFilenameWithoutLeadingSlash}-${size}.webp ${size}w`).join(', ')
-
-    const avifSrcSet = imageSizes.map((size) => `/images/optimized/${baseFilenameWithoutLeadingSlash}-${size}.avif ${size}w`).join(', ')
+    const avifSrcSet = IMAGE_SIZES.map((size) => `/images/optimized/${baseFilenameWithoutLeadingSlash}-${size}.avif ${size}w`).join(', ')
 
     return (
         <picture className={className}>
