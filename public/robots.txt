@@ -1,0 +1,12 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Block access to specific folders
+Disallow: /private/
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /cgi-bin/
+
+# Sitemap location (you'll want to replace this with your actual sitemap URL)
+Sitemap: https://griffinsloves.com/sitemap.xml

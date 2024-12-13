@@ -10,7 +10,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "preview": "vite preview",
-    "fetch-wiki": "tsx scripts/runWikiFetch.ts",
+    "fetch-wiki-books": "tsx scripts/runWikiFetchBooks.ts",
+    "fetch-wiki-games": "tsx scripts/runWikiFetchGames.ts",
     "optimize-images": "tsx scripts/optimizeImages.ts"
   },
   "dependencies": {

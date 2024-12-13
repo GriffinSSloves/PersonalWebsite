@@ -6,11 +6,18 @@ import fs from 'fs/promises'
 export interface FetchWikiOptions {
     items: WikiFetchable[]
     imageDir: string
+    imageDirToStrip: string
     sanitize: boolean
     delayBetweenRequests?: number // Optional delay between requests in ms
 }
 
-export const fetchWikiContent = async ({ items, imageDir, sanitize, delayBetweenRequests = 1000 }: FetchWikiOptions): Promise<Record<string, WikiContent>> => {
+export const fetchWikiContent = async ({
+    items,
+    imageDir,
+    imageDirToStrip,
+    sanitize,
+    delayBetweenRequests = 1000
+}: FetchWikiOptions): Promise<Record<string, WikiContent>> => {
     console.log('Starting to fetch Wikipedia content...')
     console.log('Items to process:', items)
 
@@ -23,6 +30,7 @@ export const fetchWikiContent = async ({ items, imageDir, sanitize, delayBetween
         const result = await wikiClient.fetchWikipediaContent({
             wikiFetchable: item,
             imageDir,
+            imageDirToStrip,
             sanitize
         })
 

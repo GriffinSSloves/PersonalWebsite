@@ -1,3 +1,4 @@
+import { GriffImage } from '@/components/common/GriffImage'
 import { Card, CardContent } from '@/components/ui/card'
 import { ReactNode } from 'react'
 
@@ -23,7 +24,7 @@ const timelineItems: TimelineItem[] = [
                 friends.
             </p>
         ),
-        imageUrl: '/images/aboutMe/PixarChessShort.jpg',
+        imageUrl: '/aboutMe/PixarChessShort.jpg',
         imageAlt: 'Me playing chess'
     },
     {
@@ -37,7 +38,7 @@ const timelineItems: TimelineItem[] = [
                 importantly, I achieved the rank of Legend in Hearthstone and beat Civ V on Deity difficulty.
             </p>
         ),
-        imageUrl: '/images/aboutMe/FriendlyRobot.webp',
+        imageUrl: '/aboutMe/FriendlyRobot.webp',
         imageAlt: 'USC Trojan logo'
     },
     {
@@ -51,7 +52,7 @@ const timelineItems: TimelineItem[] = [
                 writing, as a key part of myself.
             </p>
         ),
-        imageUrl: '/images/aboutMe/Seattle.webp',
+        imageUrl: '/aboutMe/Seattle.webp',
         imageAlt: 'Current role illustration'
     },
     {
@@ -64,7 +65,7 @@ const timelineItems: TimelineItem[] = [
                 invite everyone to join in and be a part of my tribe of good and friendly people.
             </p>
         ),
-        imageUrl: '/images/aboutMe/Sadface.jpg',
+        imageUrl: '/aboutMe/Sadface.jpg',
         imageAlt: 'Covid illustration'
     },
     {
@@ -77,7 +78,7 @@ const timelineItems: TimelineItem[] = [
                 journey is now our journey…
             </p>
         ),
-        imageUrl: '/images/aboutMe/GriffinMelissaEngagementPic.jpeg',
+        imageUrl: '/aboutMe/GriffinMelissaEngagementPic.jpeg',
         imageAlt: "Griffin and Melissa's engagement picture"
     },
     {
@@ -89,7 +90,7 @@ const timelineItems: TimelineItem[] = [
                 on fun trips. We will drink good boba tea. We will root on our favorite teams (go Niners!). Most importantly, we’ll enjoy each and every day.
             </p>
         ),
-        imageUrl: '/images/aboutMe/GriffinMelissaWeddingPic.jpeg',
+        imageUrl: '/aboutMe/GriffinMelissaWeddingPic.jpeg',
         imageAlt: 'Future illustration'
     }
 ]
@@ -106,7 +107,7 @@ export const AboutMePage = () => {
                 {timelineItems.map((item, index) => (
                     <div key={index} className='flex flex-col gap-8 min-h-[24rem] md:h-96 md:flex-row items-center'>
                         <div className={`w-full h-64 md:h-full md:w-1/2 order-1 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
-                            <img src={item.imageUrl} alt={item.imageAlt} className='w-full h-full object-contain rounded-lg shadow-lg bg-secondary' />
+                            <GriffImage src={item.imageUrl} alt={item.imageAlt} className='w-full h-full object-contain rounded-lg shadow-lg bg-secondary' />
                         </div>
 
                         <Card className={`w-full md:w-1/2 h-auto md:h-full order-2 ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>

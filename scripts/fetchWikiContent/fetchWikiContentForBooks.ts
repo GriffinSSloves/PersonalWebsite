@@ -7,7 +7,8 @@ const outputPath = path.join(process.cwd(), 'public', 'Data', 'bookWikiContent.j
 export const fetchBookDataFromWiki = async () => {
     const fetchOptions: FetchWikiOptions = {
         items: allBooks,
-        imageDir: 'public/images/books',
+        imageDir: 'src/assets/images/books',
+        imageDirToStrip: 'src/assets/images/',
         sanitize: true,
         delayBetweenRequests: 1000
     }

@@ -1,7 +1,7 @@
 import path from 'path'
 import sanitizeHtml from 'sanitize-html'
 import fs from 'fs/promises'
-import { getImagePath, stripPublicFromPath } from '@/utils/getImagePath'
+import { getImagePath, stripFromPath } from '@/utils/getImagePath'
 
 export interface WikiFetchable {
     title: string
@@ -23,6 +23,7 @@ type FetchWikipediaContentParams = {
     wikiFetchable: WikiFetchable
     sanitize: boolean
     imageDir: string
+    imageDirToStrip: string
 }
 
 type ImageDetails = {
@@ -30,7 +31,7 @@ type ImageDetails = {
 }
 
 export class WikipediaClient implements IWikipediaClient {
-    fetchWikipediaContent = async ({ wikiFetchable, sanitize, imageDir }: FetchWikipediaContentParams): Promise<WikiContent> => {
+    fetchWikipediaContent = async ({ wikiFetchable, sanitize, imageDir, imageDirToStrip }: FetchWikipediaContentParams): Promise<WikiContent> => {
         const { url, title } = wikiFetchable
 
         const pageTitle = WikipediaClient.#extractTitleFromUrl(url)
@@ -66,10 +67,11 @@ export class WikipediaClient implements IWikipediaClient {
         if (wikiImageUrl) {
             // Download and save the image, then store the local path
 
-            const localImagePath = await this.#downloadAndSaveImage(imageDir, wikiImageUrl, title)
-            result.imageUrl = stripPublicFromPath(localImagePath)
+            const localImagePath = await this.#downloadAndSaveImage(imageDir, wikiImageUrl, title, true)
+            result.imageUrl = stripFromPath(localImagePath, imageDirToStrip)
         } else {
-            result.imageUrl = getImagePath(title, imageDir)
+            const path = getImagePath(title, imageDir)
+            result.imageUrl = stripFromPath(path, imageDirToStrip)
         }
 
         return result
@@ -115,7 +117,7 @@ export class WikipediaClient implements IWikipediaClient {
         return undefined
     }
 
-    #downloadAndSaveImage = async (imageDir: string, imageUrl: string, title: string): Promise<string> => {
+    #downloadAndSaveImage = async (imageDir: string, imageUrl: string, title: string, ignoreSave?: boolean): Promise<string> => {
         if (!imageUrl) return ''
 
         try {
@@ -130,6 +132,12 @@ export class WikipediaClient implements IWikipediaClient {
             const filename = `${safeTitle}${extension}`
             const relativePath = path.join(imageDir, filename)
             const absolutePath = path.join(process.cwd(), relativePath)
+
+            if (ignoreSave) {
+                console.log('Ignoring save of image:', relativePath)
+
+                return `/${relativePath}`
+            }
 
             // Ensure the directory exists
             await fs.mkdir(path.dirname(absolutePath), { recursive: true })

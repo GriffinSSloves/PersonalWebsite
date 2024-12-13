@@ -7,6 +7,7 @@ import { HTMLParser } from '@/clients/HTMLParser'
 import { useState, ReactElement } from 'react'
 import { GriffLink } from '../common/GriffLink'
 import { Separator } from '../ui/separator'
+import { GriffImage } from '../common/GriffImage'
 
 const getPodiumColor = (rarity: GamingAchievement['rarity']) => {
     const colors = {
@@ -43,7 +44,7 @@ const AchievementCard = ({ achievement, gameData, textSize, handleHoverChange, w
                         <CardTitle className={`${textSize} flex justify-between items-center gap-4`}>
                             <div className='flex items-center gap-3'>
                                 <div className='w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 flex justify-center items-center'>
-                                    <img src={gameData.imageUrl} alt={gameData.title} className='object-cover' />
+                                    <GriffImage src={gameData.imageUrl} alt={gameData.title} className='object-cover' />
                                 </div>
                                 <span className='flex-grow'>
                                     {achievement.gameTitle}

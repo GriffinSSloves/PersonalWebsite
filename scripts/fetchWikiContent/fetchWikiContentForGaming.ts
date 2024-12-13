@@ -22,7 +22,9 @@ export const fetchGameDataFromWiki = async () => {
 
     const fetchOptions: FetchWikiOptions = {
         items: gameDataFetchable,
-        imageDir: 'public/images/games',
+        imageDir: 'src/assets/images/games',
+        imageDirToStrip: 'src/assets/images/',
+
         sanitize: true,
         delayBetweenRequests: 1000
     }

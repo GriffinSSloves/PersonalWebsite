@@ -1,3 +1,4 @@
+import { GriffImage } from '@/components/common/GriffImage'
 import { GriffLink } from '@/components/common/GriffLink'
 import FriendCard from '@/components/custom/FriendCard'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
@@ -13,31 +14,31 @@ const friendProjectData: FriendProjectData[] = [
     {
         title: 'Wool at the Gates',
         description: 'A base-building strategy game in which you defend your base from hordes of sheep',
-        imgSrc: '/images/friends/WoolAtTheGates.jpg',
+        imgSrc: '/friends/WoolAtTheGates.jpg',
         link: 'https://store.steampowered.com/app/2994990/Wool_at_the_Gates/'
     },
     {
         title: 'The Typed Writer',
         description: "My fiancee's reviews of every book she has read",
-        imgSrc: '/images/friends/TheTypedWriter.jpg',
+        imgSrc: '/friends/TheTypedWriter.jpg',
         link: 'https://www.thetypedwriter.com/'
     },
     {
         title: 'Jackalope',
         description: 'An app that helps gig economy workers find jobs, manage their schedule, and track their finances',
-        imgSrc: '/images/friends/Jackalope.png',
+        imgSrc: '/friends/Jackalope.png',
         link: 'https://www.jackalo.pe/'
     },
     {
         title: "Girls' Night",
         description: 'Hilarious comedy sketch video',
-        imgSrc: '/images/friends/GirlsNight.png',
+        imgSrc: '/friends/GirlsNight.png',
         link: 'https://www.youtube.com/watch?v=OLM8jyNNGMQ'
     },
     {
         title: 'Besthuntr - Rouje The Cat',
         description: 'A song by a cat',
-        imgSrc: '/images/friends/RoujeTheCat.png',
+        imgSrc: '/friends/RoujeTheCat.png',
         link: 'https://open.spotify.com/artist/3KomuCo3Yv3LHCMAWOuw4k'
     }
 ]
@@ -68,7 +69,7 @@ export const FriendsPage = () => {
                                 <GriffLink external href={project.link} className='no-underline'>
                                     <Card className='h-80 overflow-hidden bg-white hover:bg-gray-50 transition-colors'>
                                         <div className='overflow-hidden h-2/3'>
-                                            <img
+                                            <GriffImage
                                                 src={project.imgSrc}
                                                 alt={project.title}
                                                 className='w-full h-full object-cover transition-transform duration-300 hover:scale-105'

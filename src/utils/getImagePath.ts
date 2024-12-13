@@ -5,6 +5,7 @@ export const getImagePath = (title: string, directory: string) => {
     return `/${directory}/${titleWithoutSpecialChars}.jpg`
 }
 
-export const stripPublicFromPath = (path: string) => {
-    return path.replace('public/', '')
+// Usage: stripFromPath('src/images/My Image.jpg', 'src/images/')
+export const stripFromPath = (path: string, strip: string) => {
+    return path.replace(strip, '')
 }

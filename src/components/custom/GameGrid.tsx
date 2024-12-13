@@ -6,6 +6,7 @@ import { Separator } from '@/components/ui/separator'
 import { GriffLink } from '../common/GriffLink'
 import { HTMLParser } from '@/clients/HTMLParser'
 import { GameData } from '@/data/gameData'
+import { GriffImage } from '../common/GriffImage'
 
 type GamePopoverProps = {
     game: GameData
@@ -20,11 +21,7 @@ const GamePopover = ({ game, handleHoverChange, wikiElement }: GamePopoverProps)
             <HoverCardTrigger asChild>
                 <Card className='overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col align-center  gap-2 p-4'>
                     <div className='flex justify-center items-start h-64 p-2'>
-                        <img
-                            src={game.imageUrl || '/api/placeholder/300/450'}
-                            alt={`Cover of ${game.title}`}
-                            className='object-contain h-full w-auto max-w-full'
-                        />
+                        <GriffImage src={game.imageUrl} alt={`Cover of ${game.title}`} className='object-contain h-full w-auto max-w-full' />
                     </div>
                     <CardContent className='p-0'>
                         <h3 className='font-semibold text-lg line-clamp-2'>{game.title}</h3>

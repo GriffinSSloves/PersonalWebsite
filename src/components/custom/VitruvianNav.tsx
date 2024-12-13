@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { GriffImage } from '../common/GriffImage'
 
 type NavLinkPosition = 'heart' | 'leftArm' | 'rightArm' | 'leftLeg' | 'rightLeg'
 
@@ -52,7 +53,7 @@ export const VitruvianNav = ({ links, className = '' }: VitruvianNavProps) => {
             {/* Container for the image */}
             <div className='relative w-full pb-[100%]'>
                 {/* The Vitruvian man image */}
-                <img src='/images/home/VitruvianMan.webp' alt='Vitruvian Man Navigation' className='absolute inset-0 w-full h-full object-contain' />
+                <GriffImage src='/home/VitruvianMan.webp' alt='Vitruvian Man Navigation' className='absolute inset-0 w-full h-full object-contain' />
 
                 {/* Navigation bubbles */}
                 {links.map((link) => (

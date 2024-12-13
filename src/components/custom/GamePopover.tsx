@@ -5,6 +5,7 @@ import { ReactElement, useState } from 'react'
 import { HTMLParser } from '@/clients/HTMLParser'
 import { GriffLink } from '../common/GriffLink'
 import { GameData } from '@/data/gameData'
+import { GriffImage } from '../common/GriffImage'
 
 type GamePopoverProps = {
     game: GameData
@@ -54,7 +55,7 @@ export const GamePopover = ({ game }: GamePopoverProps) => {
                                 <div className='relative'>
                                     {game.imageUrl && (
                                         <div className='float-right ml-4 mb-2'>
-                                            <img src={game.imageUrl} alt={game.title} className='w-32 rounded-md' />
+                                            <GriffImage src={game.imageUrl} alt={game.title} className='w-32 rounded-md' />
                                         </div>
                                     )}
                                     {wikiElement}

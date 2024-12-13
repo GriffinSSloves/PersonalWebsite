@@ -6,6 +6,7 @@ import { Separator } from '@/components/ui/separator'
 import { GriffLink } from '../common/GriffLink'
 import { HTMLParser } from '@/clients/HTMLParser'
 import { BookData } from '@/data/bookData'
+import { GriffImage } from '../common/GriffImage'
 
 type BookPopoverProps = {
     book: BookData
@@ -20,11 +21,7 @@ const BookPopover = ({ book, showRating, handleHoverChange, wikiElement }: BookP
             <HoverCardTrigger asChild>
                 <Card className='overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col align-center  gap-2 p-4'>
                     <div className='flex justify-center items-start h-64 p-2'>
-                        <img
-                            src={book.imageUrl || '/api/placeholder/300/450'}
-                            alt={`Cover of ${book.title}`}
-                            className='object-contain h-full w-auto max-w-full'
-                        />
+                        <GriffImage src={book.imageUrl} alt={`Cover of ${book.title}`} className='object-contain h-full w-auto max-w-full' />
                     </div>
                     <CardContent className='p-0'>
                         <h3 className='font-semibold text-lg line-clamp-2'>{book.title}</h3>

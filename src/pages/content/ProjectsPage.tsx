@@ -1,3 +1,4 @@
+import { GriffImage } from '@/components/common/GriffImage'
 import { LinkButton } from '@/components/common/GriffLink'
 import ProjectCard from '@/components/custom/ProjectCard'
 import { Star } from 'lucide-react'
@@ -13,9 +14,7 @@ export const ProjectsPage = () => {
                         title='Foxtail AI'
                         description='An app that cross-lists your items on eBay, Facebook Marketplace, and other online shopping sites'
                         leftColumn={{
-                            content: (
-                                <img className='w-full max-h-48 object-contain aspect-auto' src='/images/projects/FoxtailAI.webp' alt="Foxtail AI's Logo" />
-                            )
+                            content: <GriffImage className='w-full max-h-48 object-contain aspect-auto' src='projects/FoxtailAI' alt="Foxtail AI's Logo" />
                         }}
                         rightColumn={{
                             content: (
@@ -48,9 +47,9 @@ export const ProjectsPage = () => {
                         description='Digital Whiteboard within the Microsoft Office Suite'
                         leftColumn={{
                             content: (
-                                <img
+                                <GriffImage
                                     className='w-full max-h-48 object-contain aspect-auto'
-                                    src='/images/projects/MicrosoftWhiteboard.avif'
+                                    src='projects/MicrosoftWhiteboard'
                                     alt='Microsoft Whiteboard'
                                 />
                             )
@@ -80,11 +79,7 @@ export const ProjectsPage = () => {
                         description='Story-based video game about a girl who gets separated from her dad in a forest'
                         leftColumn={{
                             content: (
-                                <img
-                                    className='w-full max-h-48 object-contain aspect-auto'
-                                    src='/images/projects/QuietOfTheLeaves.png'
-                                    alt='Quiet of the Leaves'
-                                />
+                                <GriffImage className='w-full max-h-48 object-contain aspect-auto' src='projects/QuietOfTheLeaves' alt='Quiet of the Leaves' />
                             )
                         }}
                         rightColumn={{
