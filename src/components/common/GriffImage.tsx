@@ -25,10 +25,10 @@ export const GriffImage = ({
     const avifSrcSet = imageSizes.map((size) => `/images/optimized/${baseFilename}-${size}.avif ${size}w`).join(', ')
 
     return (
-        <picture>
+        <picture className={className}>
             <source type='image/avif' srcSet={avifSrcSet} sizes={sizes} />
             <source type='image/webp' srcSet={webpSrcSet} sizes={sizes} />
-            <img src={`/images/optimized/${baseFilename}-1024.webp`} alt={alt} className={className} loading='lazy' decoding='async' {...props} />
+            <img src={`/images/optimized/${baseFilename}-1024.webp`} className={className} loading='lazy' decoding='async' alt={alt} {...props} />
         </picture>
     )
 }
