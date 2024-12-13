@@ -33,12 +33,7 @@ export const VitruvianNav = ({ links, className = '' }: VitruvianNavProps) => {
     return (
         <div className={`relative w-full max-w-3xl mx-auto ${className}`}>
             <div className='relative w-full pb-[100%]'>
-                <GriffImage
-                    src='/home/VitruvianMan.webp'
-                    alt='Vitruvian Man Navigation'
-                    className='absolute inset-0 w-full h-full object-contain'
-                    fetchPriority='high'
-                />
+                <GriffImage src='/home/VitruvianMan.webp' alt='Vitruvian Man Navigation' className='absolute inset-0 w-full h-full object-contain' />
 
                 {links.map((link) => (
                     <Link

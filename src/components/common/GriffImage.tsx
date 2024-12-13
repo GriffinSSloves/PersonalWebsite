@@ -2,6 +2,9 @@ interface GriffImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
 const placeholderImage = '/system/placeholder.png'
 
+// TODO: Add placeholder image
+// TODO: Need to fix double
+
 export const GriffImage = ({
     src = placeholderImage,
     alt,
@@ -11,6 +14,7 @@ export const GriffImage = ({
 }: GriffImageProps) => {
     const extension = src.split('.').pop()?.toLowerCase()
     const baseFilename = src.replace(/\.[^/.]+$/, '')
+    const baseFilenameWithoutLeadingSlash = baseFilename.replace(/^\//, '')
 
     // If it's an SVG, render it directly
     if (extension === 'svg') {
@@ -20,15 +24,15 @@ export const GriffImage = ({
     // For raster images, use picture element with srcset
     const imageSizes = [270, 768, 1024, 1310, 1536, 1720, 1890, 2048]
 
-    const webpSrcSet = imageSizes.map((size) => `/images/optimized/${baseFilename}-${size}.webp ${size}w`).join(', ')
+    const webpSrcSet = imageSizes.map((size) => `/images/optimized/${baseFilenameWithoutLeadingSlash}-${size}.webp ${size}w`).join(', ')
 
-    const avifSrcSet = imageSizes.map((size) => `/images/optimized/${baseFilename}-${size}.avif ${size}w`).join(', ')
+    const avifSrcSet = imageSizes.map((size) => `/images/optimized/${baseFilenameWithoutLeadingSlash}-${size}.avif ${size}w`).join(', ')
 
     return (
         <picture className={className}>
             <source type='image/avif' srcSet={avifSrcSet} sizes={sizes} />
             <source type='image/webp' srcSet={webpSrcSet} sizes={sizes} />
-            <img src={`/images/optimized/${baseFilename}-1024.webp`} className={className} alt={alt} {...props} />
+            <img src={`/images/optimized/${baseFilenameWithoutLeadingSlash}-1024.webp`} className={className} alt={alt} {...props} />
         </picture>
     )
 }
