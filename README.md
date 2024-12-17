@@ -10,6 +10,7 @@ Built from this template website (Also created by Griffin Sloves) - https://gith
 
 - Typescript
 - React
+- Vite
 - TailwindCSS
 - ShadCN base components
 - React Router Dom
